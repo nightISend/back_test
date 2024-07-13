@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
 public interface userRepository extends JpaRepository<User,String> {
     //根据用户名和密码判断用户是否存在
     @Query(value = "select * from user where username=?1 and password=?2",nativeQuery = true)
-    User isUserExist(String Username,String password);
+    User GetUser(String Username, String password);
 }
