@@ -1,15 +1,14 @@
 package com.example.back.entity;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Date;
 
-//登录接口的返回数据类型
-public class UserResult {
+// /login的返回体
+public class userResult {
     public class Data {
 
         public Data(User user){
+            this.username=user.getUsername();
             this.avatar=user.getAvatar();
             this.expires=user.getExpires();
             this.nickname=user.getNickname();
@@ -100,11 +99,11 @@ public class UserResult {
     private String condition;
     private Data data;
 
-    public UserResult(User user){
+    public userResult(User user){
         Data data=new Data(user);
         setData(data);
     }
-    public UserResult(){
+    public userResult(){
         this.data=null;
     }
 

@@ -2,8 +2,8 @@ package com.example.back.entity;
 
 import java.util.Date;
 
-//刷新token接口的返回数据类型
-public class RefreshTokenResult {
+// /refresh-token的返回体
+public class refreshTokenResult {
     public class Data{
         public String getAccessToken() {
             return accessToken;
@@ -43,7 +43,7 @@ public class RefreshTokenResult {
         }
     }
 
-    public RefreshTokenResult(){
+    public refreshTokenResult(){
         this.data=new Data();
     }
 
