@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--注意namespace和resultType需要根据项目修改-->
+<mapper namespace="com.example.back.mapper.Record12345Mapper">
+
+    <select id="selectByConditions" resultType="com.example.back.entity.Record12345Entity">
+
+        select id, events, category, name, phone, occur_time, solve_time, address, longitude, latitude, ST_AsText(geom) as geom
+        from sum_12345_wash
+        <where>
+            ST_AsText(geom)!=''
+            <if test="condition.id!=null and condition.id!=''">
+                and id = #{condition.id}
+            </if>
+            <if test="condition.category!=null and condition.category!=''">
+                and category = #{condition.category}
+            </if>
+            <if test="condition.name!=null and condition.name!=''">
+                and name = #{condition.name}
+            </if>
+            <if test="condition.phone!=null and condition.phone!=''">
+                and phone = #{condition.phone}
+            </if>
+            <if test="condition.occur_time!=null">
+                and occur_time &gt; #{condition.occur_time}
+            </if>
+            <if test="condition.solve_time!=null">
+                and solve_time &lt; #{condition.solve_time}
+            </if>
+            <if test="condition.address!=null and condition.address!=''">
+                and address like concat('%',#{condition.address},'%')
+            </if>
+        </where>
+
+    </select>
+</mapper>
